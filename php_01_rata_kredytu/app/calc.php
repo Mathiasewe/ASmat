@@ -8,42 +8,42 @@ require_once dirname(__FILE__).'/../config.php';
 
 // 1. pobranie parametrów
 
-$x = $_REQUEST ['x'];
-$y = $_REQUEST ['y'];
-$z = $_REQUEST ['z'];
+$kwota = $_REQUEST ['kwota'];
+$liczba_lat = $_REQUEST ['liczba_lat'];
+$oprocentowanie = $_REQUEST ['oprocentowanie'];
 
 // 2. walidacja parametrów z przygotowaniem zmiennych dla widoku
 
 // sprawdzenie, czy parametry zostały przekazane
-if ( ! (isset($x) && isset($y) && isset($z))) {
+if ( ! (isset($kwota) && isset($liczba_lat) && isset($oprocentowanie))) {
 	//sytuacja wystąpi kiedy np. kontroler zostanie wywołany bezpośrednio - nie z formularza
 	$messages [] = 'Błędne wywołanie aplikacji. Brak jednego z parametrów.';
 }
 
 // sprawdzenie, czy potrzebne wartości zostały przekazane
-if ( $x == "") {
+if ( $kwota == "") {
 	$messages [] = 'Nie podano kwoty';
 }
-if ( $y == "") {
+if ( $liczba_lat == "") {
 	$messages [] = 'Nie podano liczby lat';
 }
-if ( $z == "") {
+if ( $oprocentowanie == "") {
 	$messages [] = 'Nie podano oprocentowania';
 }
 
 //nie ma sensu walidować dalej gdy brak parametrów
 if (empty( $messages )) {
 	
-	// sprawdzenie, czy $x i $y są liczbami całkowitymi
-	if (! is_numeric( $x )) {
+	// sprawdzenie, czy $kwota, $liczba_lat i $oprocentowanie są liczbami całkowitymi
+	if (! is_numeric( $kwota )) {
 		$messages [] = 'Pierwsza wartość nie jest liczbą całkowitą';
 	}
 	
-	if (! is_numeric( $y )) {
+	if (! is_numeric( $liczba_lat )) {
 		$messages [] = 'Druga wartość nie jest liczbą całkowitą';
 	}	
 	
-	if (! is_numeric( $z )) {
+	if (! is_numeric( $oprocentowanie )) {
 		$messages [] = 'Druga wartość nie jest liczbą całkowitą';
 	}
 
@@ -53,17 +53,17 @@ if (empty( $messages )) {
 
 if (empty ( $messages )) { // gdy brak błędów
 	
-	//konwersja parametrów na int
-	$x = intval($x);
-	$y = intval($y);
-	$z = intval($z);
+	//konwersja parametrów na int i float
+	$kwota = intval($kwota);
+	$liczba_lat = intval($liczba_lat);
+	$oprocentowanie = floatval($oprocentowanie);
 	
 	//wykonanie operacji
-	$result = $x * (1 + $z/100 * $y) / ($y * 12);
+	$result = $kwota * (1 + $oprocentowanie/100 * $liczba_lat) / ($liczba_lat * 12);
 	$zaokraglona = round($result, 2);
 }
 
 // 4. Wywołanie widoku z przekazaniem zmiennych
-// - zainicjowane zmienne ($messages,$x,$y,$operation,$result)
+// - zainicjowane zmienne ($messages,$kwota,$liczba_lat,$oprocentowanie,$result)
 //   będą dostępne w dołączonym skrypcie
 include 'calc_view.php';

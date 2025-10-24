@@ -18,16 +18,16 @@
 
 <form action="<?php print(_APP_URL);?>/app/calc.php" method="post">
 	<div class="form-row">
-	<label for="id_x">Kwota: </label>
-	<input id="id_x" type="text" name="x" value="<?php isset($x)?print($x):print(""); ?>" /><br />
+	<label for="id_kwota">Kwota: </label>
+	<input id="id_kwota" type="text" name="kwota" value="<?php isset($kwota)?print($kwota):print(""); ?>" /><br />
 	</div>
 <div class="form-row">
-	<label for="id_y">Liczba lat: </label>
-	<input id="id_y" type="text" name="y" value="<?php isset($y)?print($y):print(""); ?>" /><br />
+	<label for="id_liczba_lat">Liczba lat: </label>
+	<input id="id_liczba_lat" type="text" name="liczba_lat" value="<?php isset($liczba_lat)?print($liczba_lat):print(""); ?>" /><br />
 	</div>
 	<div class="form-row">	
-	<label for="id_z">Oprocentowanie: </label>
-	<input id="id_z" type="text" name="z" value="<?php isset($z)?print($z):print(""); ?>" /><br />
+	<label for="id_oprocentowanie">Oprocentowanie: </label>
+	<input id="id_oprocentowanie" type="text" name="oprocentowanie" value="<?php isset($oprocentowanie)?print($oprocentowanie):print(""); ?>" /><br />
 	</div>
 	<input type="submit" value="Oblicz" />
 </form>	

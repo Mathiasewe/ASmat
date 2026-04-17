@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.5, created on 2026-01-16 21:32:22
+/* Smarty version 5.4.5, created on 2026-04-16 01:00:47
   from 'file:main.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.5',
-  'unifunc' => 'content_696aa0563c22f5_64726382',
+  'unifunc' => 'content_69e0189fed27f1_43835588',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'dab3e3a2a00d52d5903d73cf68a2e684efead5d0' => 
     array (
       0 => 'main.tpl',
-      1 => 1768595512,
+      1 => 1776294045,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_696aa0563c22f5_64726382 (\Smarty\Template $_smarty_tpl) {
+function content_69e0189fed27f1_43835588 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\gearis\\app\\views\\templates';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, false);
 ?>
@@ -39,6 +39,10 @@ $_smarty_tpl->getInheritance()->init($_smarty_tpl, false);
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="<?php echo $_smarty_tpl->getValue('conf')->app_url;?>
 /assets/css/main.css" />
+    <?php echo '<script'; ?>
+ type="text/javascript" src="<?php echo $_smarty_tpl->getValue('conf')->app_url;?>
+/assets/js/functions.js"><?php echo '</script'; ?>
+>
 </head>
 
 <body class="is-preload">
@@ -168,7 +172,7 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                         <?php }?>
                     </div>
                     <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_592355437696aa0563b9820_88473100', 'content');
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_80466381269e0189fec9cf5_31471466', 'content');
 ?>
 
                 </div>
@@ -237,7 +241,7 @@ $_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_592355437696a
 
 </html><?php }
 /* {block 'content'} */
-class Block_592355437696aa0563b9820_88473100 extends \Smarty\Runtime\Block
+class Block_80466381269e0189fec9cf5_31471466 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\gearis\\app\\views\\templates';

@@ -50,6 +50,49 @@ class GearCtrl {
         App::getSmarty()->assign('totalPages', $totalPages); 
         App::getSmarty()->display("GearList.tpl");
         }
+
+        public function action_gearListPart() {
+
+        $sf_nazwa = ParamUtils::getFromRequest('sf_nazwa');
+        $page = ParamUtils::getFromRequest('page') ?: 1;
+
+        $limit = 6;
+        $offset = ($page - 1) * $limit;
+
+        $sf_nazwa = ParamUtils::getFromRequest('sf_nazwa');
+        $where = [];
+        if (isset($sf_nazwa) && strlen($sf_nazwa) > 0) {
+        $where['sprzet.nazwa[~]'] = $sf_nazwa; 
+        }
+
+        $totalRecords = App::getDB()->count("sprzet", $where);
+        $totalPages = ceil($totalRecords / $limit);
+
+        $where["LIMIT"] = [$offset, $limit];
+
+        if (isset($sf_nazwa) && strlen($sf_nazwa) > 0) {
+        $where['sprzet.nazwa[~]'] = $sf_nazwa; 
+        }
+
+        $list = App::getDB()->select("sprzet", [
+            "[>]kategorie_sprzetu" => ["id_kategorie_sprzetu" => "id"]
+        ], [
+            "sprzet.id",
+            "sprzet.nazwa",
+            "sprzet.rozmiar",
+            "sprzet.cena_za_dobe",
+            "sprzet.status",
+            "sprzet.opis",
+            "kategorie_sprzetu.nazwa(kategoria)"
+        ], $where);
+
+        App::getSmarty()->assign('searchForm', $sf_nazwa);
+        App::getSmarty()->assign('gear', $list);
+        App::getSmarty()->assign('page_title', 'Nasza oferta sprzętu');
+        App::getSmarty()->assign('currentPage', $page);
+        App::getSmarty()->assign('totalPages', $totalPages); 
+        App::getSmarty()->display("GearListPart.tpl");
+        }
     public function action_gearAdd() {
 
         $categories = App::getDB()->select("kategorie_sprzetu", "*");
@@ -169,30 +212,25 @@ class GearCtrl {
         }
         
     public function action_gearDelete() {
-
+        
+        if (!RoleUtils::inRole('kierownik')) {
+        Utils::addErrorMessage('Brak uprawnień do tej akcji!');
+        App::getRouter()->forwardTo('gearListPart');
+        //$this->action_gearListPart();
+        return;
+    }
+        
         $id = ParamUtils::getFromCleanURL(1);
 
         if (isset($id)) {
-            try {
+        App::getDB()->delete("sprzet", ["id" => $id]);
+        $fotoPath = "images/" . $id . ".jpg";
+        if (file_exists($fotoPath)) { unlink($fotoPath); }
+        Utils::addInfoMessage('Sprzęt usunięty');
+    }
 
-                App::getDB()->delete("sprzet", [
-                    "id" => $id
-                ]);
+    $this->action_gearListPart();
+    }
 
-
-                $fotoPath = "images/" . $id . ".jpg";
-                if (file_exists($fotoPath)) {
-                    unlink($fotoPath);
-                }
-
-                Utils::addInfoMessage('Sprzęt został pomyślnie usunięty');
-            } catch (\PDOException $e) {
-                Utils::addErrorMessage('Błąd bazy danych: ' . $e->getMessage());
-            }
-        }
-
-
-        App::getRouter()->forwardTo('gearList');
-        }
 }
 

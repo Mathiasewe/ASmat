@@ -11,6 +11,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="{$conf->app_url}/assets/css/main.css" />
+    <script type="text/javascript" src="{$conf->app_url}/assets/js/functions.js"></script>
 </head>
 
 <body class="is-preload">

@@ -1,17 +1,17 @@
 <?php
-$conf->debug = true; # set true during development and use in your code (for instance check if true to send additional message)
+$conf->debug = true;
 
 # ---- Webapp location
-$conf->server_name = 'localhost';   # server address and port
-$conf->protocol = 'http';           # http or https
-$conf->app_root = '/gearis/public';   # project subfolder in domain (relative to main domain)
+$conf->server_name = 'gearis-app-a9c3dhethsbkcadn.francecentral-01.azurewebsites.net';
+$conf->protocol = 'https';
+$conf->app_root = '';
 
 # ---- Database config - values required by Medoo
 $conf->db_type = 'mysql';
-$conf->db_server = 'localhost';
+$conf->db_server = 'gearismysql2026spain.mysql.database.azure.com';
 $conf->db_name = 'dbogeris';
-$conf->db_user = 'root';
-$conf->db_pass = '';
+$conf->db_user = 'gearisadmin';
+$conf->db_pass = '#gearisadmin2026';
 $conf->db_charset = 'utf8';
 
 # ---- Database config - optional values

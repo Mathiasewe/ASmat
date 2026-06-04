@@ -4,7 +4,7 @@
 <div class="pure-g">
     <div class="pure-u-1-1">
         <header>
-            <h2>Logowanie do systemu TEST</h2>
+            <h2>Logowanie do systemu</h2>
         </header>
         <form action="{$conf->action_url}login" method="post" class="pure-form pure-form-aligned bottom-margin">
             <fieldset>

@@ -1,10 +1,10 @@
 <?php
-$conf->debug = true; # set true during development and use in your code (for instance check if true to send additional message)
+$conf->debug = true;
 
 # ---- Webapp location
-$conf->server_name = 'gearis-app-a9c3dhethsbkcadn.francecentral-01.azurewebsites.net';   # server address and port
-$conf->protocol = 'https';           # http or https
-$conf->app_root = '';                # project subfolder in domain (relative to main domain)
+$conf->server_name = 'gearis-app-a9c3dhethsbkcadn.francecentral-01.azurewebsites.net';
+$conf->protocol = 'https';
+$conf->app_root = '';
 
 # ---- Database config - values required by Medoo
 $conf->db_type = 'mysql';

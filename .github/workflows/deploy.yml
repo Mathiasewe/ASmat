@@ -34,9 +34,9 @@ jobs:
         run: |
           cd gearis
           if [ -f vendor/bin/phpunit ]; then
-            vendor/bin/phpunit --configuration phpunit.xml
+            php vendor/bin/phpunit --configuration phpunit.xml
           elif [ -f phpunit ]; then
-            ./phpunit --configuration phpunit.xml
+            php ./phpunit --configuration phpunit.xml
           else
             echo "Nie znaleziono PHPUnit, pomijam uruchamianie testów."
           fi

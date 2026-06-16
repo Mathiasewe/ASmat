@@ -50,5 +50,5 @@ jobs:
 
       - name: Build and Push Docker image
         run: |
-          docker build -t gearis2026.azurecr.io/gearis-app:latest .
+          docker build -t gearis2026.azurecr.io/gearis-app:latest -f gearis/Dockerfile gearis/
           docker push gearis2026.azurecr.io/gearis-app:latest

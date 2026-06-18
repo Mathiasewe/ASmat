@@ -17,4 +17,16 @@ class SampleTest extends TestCase {
         $this->assertEquals('dbogeris', $conf->db_name);
     }
 
+    public function testMessagesAreEmptyOnStart() {
+        $msgs = core\App::getMessages();
+        $this->assertNotNull($msgs, "Framework Messages object was not initialized.");
+        $this->assertTrue($msgs->isEmpty(), "Messages object should be empty on startup.");
+    }
+ 
+    public function testAppRootAndProtocolSettings() {
+        $conf = core\App::getConf();
+        $this->assertEquals('https', $conf->protocol);
+        $this->assertIsString($conf->server_name);
+    }
+
 }

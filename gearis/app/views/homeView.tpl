@@ -3,7 +3,7 @@
 {block name=content}
 <header>
 	<h2 class="alt">Gearis </h2>
-	<p>Wypożyczalnia sprzętu zimowego</p>
+	<p>Wypożyczalnia sprzętu zimowego 2026</p>
 </header>
 
 <div>
